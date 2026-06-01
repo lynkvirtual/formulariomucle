@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>TRACCE VIRTUALE · Cuestionario MUCLE</title>
-    <!-- Tabler Icons (opcional, para iconografía interna) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.30.0/tabler-icons.min.css">
     <style>
         * {
@@ -23,7 +22,6 @@
             padding: 2rem 1.5rem;
         }
 
-        /* contenedor principal: tarjeta blanca */
         .form-card {
             max-width: 1000px;
             width: 100%;
@@ -31,13 +29,11 @@
             border-radius: 2rem;
             box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
             overflow: hidden;
-            transition: all 0.2s;
         }
 
-        /* header con branding */
         .brand-header {
             background: linear-gradient(135deg, #fef9f0 0%, #ffffff 100%);
-            padding: 1.8rem 2rem 1.2rem 2rem;
+            padding: 1.5rem 2rem;
             text-align: center;
             border-bottom: 1px solid #eef2f6;
         }
@@ -46,31 +42,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
 
         .logo-img {
-            height: 65px;
+            height: 85px;
             width: auto;
+            max-width: 200px;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
+
+        .brand-titles {
+            text-align: left;
         }
 
         .brand-titles h1 {
-            font-size: 1.9rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: -0.02em;
             background: linear-gradient(120deg, #1e2a3a, #0f2b3d);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
+            line-height: 1.2;
         }
 
         .brand-titles p {
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #5b6e8c;
@@ -82,20 +85,18 @@
             color: #1f3b4c;
             background: #f0f4fa;
             display: inline-block;
-            padding: 0.4rem 1.2rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 40px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* contenido del formulario (scroll interno si es necesario) */
         .form-content {
-            padding: 2rem 2rem 2rem 2rem;
+            padding: 2rem;
             max-height: 75vh;
             overflow-y: auto;
             scrollbar-width: thin;
         }
 
-        /* personalización de scroll */
         .form-content::-webkit-scrollbar {
             width: 5px;
         }
@@ -108,10 +109,10 @@
             border-radius: 10px;
         }
 
-        /* estilos internos del formulario (tomados y mejorados) */
         .section {
             margin-bottom: 2rem;
         }
+
         .section-header {
             display: flex;
             align-items: center;
@@ -120,6 +121,7 @@
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #eef2ff;
         }
+
         .section-icon {
             width: 40px;
             height: 40px;
@@ -129,23 +131,28 @@
             justify-content: center;
             font-size: 1.3rem;
         }
+
         .icon-blue { background: #E6F1FB; color: #185FA5; }
         .icon-teal { background: #E1F5EE; color: #0F6E56; }
         .icon-amber { background: #FAEEDA; color: #854F0B; }
         .icon-coral { background: #FAECE7; color: #993C1D; }
         .icon-purple { background: #EEEDFE; color: #534AB7; }
+
         .section-title {
             font-size: 1.1rem;
             font-weight: 700;
             color: #0f172a;
         }
+
         .section-sub {
             font-size: 0.7rem;
             color: #5b6e8c;
         }
+
         .field {
             margin-bottom: 1.2rem;
         }
+
         .field label {
             font-size: 0.8rem;
             font-weight: 600;
@@ -153,6 +160,7 @@
             margin-bottom: 6px;
             display: block;
         }
+
         .field input, .field textarea, .field select {
             width: 100%;
             padding: 10px 14px;
@@ -163,26 +171,31 @@
             transition: 0.2s;
             font-family: inherit;
         }
+
         .field textarea {
             min-height: 80px;
             resize: vertical;
         }
+
         .field input:focus, .field textarea:focus, .field select:focus {
             border-color: #185FA5;
             outline: none;
             box-shadow: 0 0 0 3px rgba(24,95,165,0.15);
         }
+
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
+
         .check-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
             gap: 10px;
             margin-top: 0.5rem;
         }
+
         .check-item {
             display: flex;
             align-items: center;
@@ -193,27 +206,31 @@
             border-radius: 40px;
             background: white;
             cursor: pointer;
-            transition: all 0.1s;
         }
+
         .check-item input {
             width: 16px;
             height: 16px;
             margin: 0;
             accent-color: #185FA5;
         }
+
         .check-item:has(input:checked) {
             border-color: #185FA5;
             background: #F0F7FF;
         }
+
         .divider {
             margin: 1rem 0 1.5rem;
             border: 0;
             height: 1px;
             background: linear-gradient(to right, #e2e8f0, transparent);
         }
+
         .progress-wrapper {
             margin-bottom: 1.5rem;
         }
+
         .step-counter {
             font-size: 0.7rem;
             font-weight: 500;
@@ -221,12 +238,14 @@
             text-align: right;
             margin-bottom: 6px;
         }
+
         .progress-bar {
             height: 6px;
             background: #e2e8f0;
             border-radius: 20px;
             overflow: hidden;
         }
+
         .progress-fill {
             height: 100%;
             background: #185FA5;
@@ -234,12 +253,14 @@
             border-radius: 20px;
             transition: width 0.25s ease;
         }
+
         .submit-area {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #edf2f7;
         }
+
         .btn-primary {
             background: #0f172a;
             color: white;
@@ -250,12 +271,13 @@
             border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
+
         .btn-primary:hover {
             background: #1e293b;
             transform: scale(0.98);
         }
+
         .small-note {
             font-size: 0.7rem;
             color: #6c757d;
@@ -266,8 +288,10 @@
             .form-content { padding: 1.5rem; }
             .two-col { grid-template-columns: 1fr; gap: 0.8rem; }
             .check-grid { grid-template-columns: 1fr 1fr; }
-            .brand-header { padding: 1.2rem; }
-            .logo-img { height: 45px; }
+            .brand-header { padding: 1rem; }
+            .logo-img { height: 60px; }
+            .brand-titles h1 { font-size: 1.5rem; }
+            .logo-container { gap: 0.8rem; }
         }
     </style>
 </head>
@@ -275,7 +299,6 @@
 <div class="form-card">
     <div class="brand-header">
         <div class="logo-container">
-            <!-- Logo TRACCE VIRTUALE + STRATEGIC AI CONSORTIUM (imágenes locales) -->
             <img src="logo tracce.fw.png" alt="TRACCE VIRTUALE" class="logo-img" onerror="this.style.display='none'">
             <div class="brand-titles">
                 <h1>TRACCE VIRTUALE</h1>
@@ -293,7 +316,6 @@
             <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
         </div>
 
-        <!-- FORMULARIO con Formspree (endpoint proporcionado) -->
         <form action="https://formspree.io/f/xnjreqvw" method="POST" id="mainForm">
             <!-- SECCIÓN 1: DATOS GENERALES -->
             <div class="section">
@@ -314,7 +336,7 @@
                     <div class="field"><label>Ciudad / municipio donde opera</label><input type="text" name="ciudad_operacion" placeholder="Ixtapa Zihuatanejo, Gro."></div>
                 </div>
                 <div class="field"><label>¿En qué colonias o zonas trabaja principalmente?</label><textarea name="zonas_trabajo" placeholder="Ej: Ixtapa, Zihuatanejo centro, La Ropa, Playa Linda..."></textarea></div>
-                <div class="field"><label>Redes sociales activas</label><textarea name="redes_sociales" placeholder="Instagram: @rmc_mucle&#10;Facebook: @mcmucle"></textarea></div>
+                <div class="field"><label>Redes sociales activas</label><textarea name="redes_sociales" placeholder="Instagram: @rmc_mucle&#10;Facebook: @mcmucle&#10;Otras..."></textarea></div>
                 <div class="field"><label>¿Tiene logotipo en archivo digital (PNG, JPG, PDF)?</label>
                     <select name="logotipo_status">
                         <option value="">Selecciona...</option>
@@ -326,15 +348,15 @@
             </div>
             <hr class="divider">
 
-            <!-- SECCIÓN 2: SERVICIOS ARQUITECTURA -->
+            <!-- SECCIÓN 2: SERVICIOS DE ARQUITECTURA Y CONSTRUCCIÓN -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-icon icon-teal"><i class="ti ti-building"></i></div>
                     <div><div class="section-title">2. Servicios de arquitectura y construcción</div><div class="section-sub">Tu trabajo profesional como arquitecto</div></div>
                 </div>
                 <div class="field"><label>¿Cuántos años llevas trabajando como arquitecto?</label><input type="number" name="anos_arquitecto" placeholder="Ej: 15"></div>
-                <div class="field"><label>Describe brevemente qué tipo de proyectos haces</label><textarea name="descripcion_proyectos" placeholder="Remodelaciones, ampliaciones, diseño de interiores..."></textarea></div>
-                <div class="field"><label>¿Qué servicios ofreces?</label>
+                <div class="field"><label>Describe brevemente qué tipo de proyectos haces (con tus propias palabras)</label><textarea name="descripcion_proyectos" placeholder="Remodelaciones, ampliaciones, diseño de interiores, construcción desde cero..."></textarea></div>
+                <div class="field"><label>¿Qué servicios ofreces? (marca todos los que apliquen)</label>
                     <div class="check-grid">
                         <label class="check-item"><input type="checkbox" name="servicios[]" value="Remodelación de casas"> Remodelación de casas</label>
                         <label class="check-item"><input type="checkbox" name="servicios[]" value="Ampliaciones"> Ampliaciones</label>
@@ -348,32 +370,43 @@
                         <label class="check-item"><input type="checkbox" name="servicios[]" value="Renders y visualización 3D"> Renders y visualización 3D</label>
                     </div>
                 </div>
-                <div class="field"><label>Proyecto del que te sientes más orgulloso</label><textarea name="proyecto_orgulloso" placeholder="Describe..."></textarea></div>
-                <div class="field"><label>¿Tienes fotos de proyectos terminados?</label>
-                    <select name="fotos_disponibles"><option>Sí, tengo muchas fotos</option><option>Sí, algunas</option><option>Pocas o ninguna todavía</option></select>
+                <div class="field"><label>¿Cuál es el proyecto del que te sientes más orgulloso? Descríbelo</label><textarea name="proyecto_orgulloso" placeholder="Tipo de proyecto, tamaño aproximado, resultado..."></textarea></div>
+                <div class="field"><label>¿Tienes fotos de proyectos terminados que puedas compartir?</label>
+                    <select name="fotos_disponibles">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, tengo muchas fotos</option>
+                        <option>Sí, algunas</option>
+                        <option>Pocas o ninguna todavía</option>
+                    </select>
                 </div>
-                <div class="field"><label>Rango de cobro por proyecto típico</label><input type="text" name="rango_cobro" placeholder="$50,000 – $300,000 MXN"></div>
-                <div class="field"><label>Tiempo promedio de proyecto completo</label><input type="text" name="tiempo_promedio" placeholder="1 a 3 meses"></div>
+                <div class="field"><label>¿Cuánto cobra aproximadamente por un proyecto típico? (rango)</label><input type="text" name="rango_cobro" placeholder="Ej: $50,000 – $300,000 MXN según el proyecto"></div>
+                <div class="field"><label>¿Cuánto tiempo tarda en promedio un proyecto completo?</label><input type="text" name="tiempo_promedio" placeholder="Ej: 1 a 3 meses"></div>
                 <div class="field"><label>¿Atiende a clientes extranjeros? ¿Habla inglés?</label>
-                    <select name="atencion_extranjeros"><option>Sí, atiende extranjeros y habla inglés</option><option>Atiende extranjeros pero con intérprete</option><option>Por ahora solo mexicanos</option><option>Quiere empezar a captar extranjeros</option></select>
+                    <select name="atencion_extranjeros">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, atiende clientes extranjeros y habla inglés</option>
+                        <option>Atiende extranjeros pero con ayuda de intérprete</option>
+                        <option>Por ahora solo clientes mexicanos</option>
+                        <option>Quiere empezar a captar extranjeros</option>
+                    </select>
                 </div>
-                <div class="field"><label>¿Qué lo diferencia de otros arquitectos?</label><textarea name="diferenciador" placeholder="Experiencia, trato, precios..."></textarea></div>
+                <div class="field"><label>¿Qué lo diferencia de otros arquitectos en la zona?</label><textarea name="diferenciador" placeholder="Experiencia, trato, precios, rapidez, materiales, conocimiento del mercado local..."></textarea></div>
             </div>
             <hr class="divider">
 
-            <!-- SECCIÓN 3: FERRETERÍA -->
+            <!-- SECCIÓN 3: LA FERRETERÍA MUCLE -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-icon icon-amber"><i class="ti ti-tools"></i></div>
-                    <div><div class="section-title">3. La ferretería MUCLE</div><div class="section-sub">Operación, productos y logística</div></div>
+                    <div><div class="section-title">3. La ferretería MUCLE</div><div class="section-sub">Operación actual, productos y logística</div></div>
                 </div>
-                <div class="field"><label>Nombre de la ferretería</label><input type="text" name="nombre_ferreteria" placeholder="Ferretería MUCLE"></div>
-                <div class="field"><label>Dirección</label><textarea name="direccion_ferreteria" placeholder="Calle, colonia..."></textarea></div>
+                <div class="field"><label>¿Cómo se llama la ferretería? ¿Tiene nombre propio o usa el de MUCLE?</label><input type="text" name="nombre_ferreteria" placeholder="Nombre de la ferretería o marca"></div>
+                <div class="field"><label>¿En qué dirección está ubicada?</label><textarea name="direccion_ferreteria" placeholder="Calle, colonia, referencias cercanas..."></textarea></div>
                 <div class="two-col">
-                    <div class="field"><label>Horario de atención</label><input type="text" name="horario_atencion" placeholder="Lun–Sáb 8am–7pm"></div>
-                    <div class="field"><label>Número de trabajadores</label><input type="number" name="num_trabajadores" placeholder="Ej: 3"></div>
+                    <div class="field"><label>Horario de atención</label><input type="text" name="horario_atencion" placeholder="Ej: Lun–Sáb 8am–7pm"></div>
+                    <div class="field"><label>¿Cuántas personas trabajan en la ferretería?</label><input type="number" name="num_trabajadores" placeholder="Ej: 3"></div>
                 </div>
-                <div class="field"><label>Categorías de productos</label>
+                <div class="field"><label>¿Qué categorías de productos maneja?</label>
                     <div class="check-grid">
                         <label class="check-item"><input type="checkbox" name="categorias[]" value="Herramientas manuales"> Herramientas manuales</label>
                         <label class="check-item"><input type="checkbox" name="categorias[]" value="Herramientas eléctricas"> Herramientas eléctricas</label>
@@ -391,59 +424,159 @@
                         <label class="check-item"><input type="checkbox" name="categorias[]" value="Jardín y exteriores"> Jardín y exteriores</label>
                     </div>
                 </div>
-                <div class="field"><label>Productos en inventario aprox.</label><select name="inventario_cantidad"><option>Menos de 200</option><option>200 – 500</option><option>500 – 1,000</option><option>Más de 1,000</option></select></div>
-                <div class="field"><label>¿Tiene catálogo de productos?</label><select name="catalogo_tipo"><option>Sí, en Excel</option><option>Sí, en sistema</option><option>En papel</option><option>No tengo catálogo formal</option></select></div>
-                <div class="field"><label>Sistema de punto de venta actual</label><input type="text" name="sistema_punto_venta" placeholder="Siga, CONTPAQi, Excel..."></div>
-                <div class="field"><label>¿Ofrece servicio a domicilio?</label><select name="servicio_domicilio"><option>Sí, ya lo ofrecemos</option><option>A veces</option><option>No, pero queremos ofrecerlo</option></select></div>
-                <div class="field"><label>Proveedores fijos y frecuencia</label><textarea name="proveedores" placeholder="CEMEX, Grupo AMSA..."></textarea></div>
-                <div class="field"><label>Productos bajo pedido especial</label><textarea name="pedido_especial" placeholder="Marcas especiales, importación..."></textarea></div>
-                <div class="field"><label>¿Acepta pagos con tarjeta?</label><select name="acepta_tarjeta"><option>Sí, efectivo y tarjeta</option><option>Solo efectivo</option><option>Efectivo y transferencia</option></select></div>
+                <div class="field"><label>¿Cuántos productos diferentes tiene aproximadamente en inventario?</label>
+                    <select name="inventario_cantidad">
+                        <option value="">Selecciona...</option>
+                        <option>Menos de 200</option>
+                        <option>200 – 500</option>
+                        <option>500 – 1,000</option>
+                        <option>Más de 1,000</option>
+                        <option>No lo sé con exactitud</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Tiene catálogo de productos?</label>
+                    <select name="catalogo_tipo">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, en Excel</option>
+                        <option>Sí, en sistema (Siga u otro)</option>
+                        <option>En papel / cuaderno</option>
+                        <option>No tengo catálogo formal</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Cuál es su sistema de punto de venta actual?</label><input type="text" name="sistema_punto_venta" placeholder="Ej: Siga, CONTPAQi, Excel, ninguno..."></div>
+                <div class="field"><label>¿Ofrece servicio a domicilio actualmente?</label>
+                    <select name="servicio_domicilio">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, ya lo ofrecemos</option>
+                        <option>A veces, según el cliente</option>
+                        <option>No, pero queremos ofrecerlo</option>
+                        <option>No lo vemos viable por ahora</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Tiene proveedores fijos? ¿Con qué frecuencia surte?</label><textarea name="proveedores" placeholder="Ej: CEMEX, Grupo AMSA, 2 veces por semana..."></textarea></div>
+                <div class="field"><label>¿Qué productos puede pedir bajo pedido especial?</label><textarea name="pedido_especial" placeholder="Tipos de material, marcas especiales, productos de importación..."></textarea></div>
+                <div class="field"><label>¿Acepta pagos con tarjeta actualmente?</label>
+                    <select name="acepta_tarjeta">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, efectivo y tarjeta</option>
+                        <option>Solo efectivo por ahora</option>
+                        <option>Efectivo y transferencia</option>
+                    </select>
+                </div>
             </div>
             <hr class="divider">
 
-            <!-- SECCIÓN 4: MERCADO -->
+            <!-- SECCIÓN 4: MERCADO Y COMPETENCIA -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-icon icon-coral"><i class="ti ti-target"></i></div>
-                    <div><div class="section-title">4. Mercado y competencia</div><div class="section-sub">Posición y ventajas</div></div>
+                    <div><div class="section-title">4. Mercado y competencia</div><div class="section-sub">Tu posición y ventajas frente a la competencia</div></div>
                 </div>
-                <div class="field"><label>Principales competidores</label><textarea name="competidores" placeholder="Ferreterías cercanas..."></textarea></div>
-                <div class="field"><label>¿En qué les gana?</label><textarea name="ventaja_competencia" placeholder="Surtido, precio, atención..."></textarea></div>
-                <div class="field"><label>% de clientes extranjeros</label><select name="porcentaje_extranjeros"><option>Casi ninguno</option><option>Entre 10% y 30%</option><option>Entre 30% y 50%</option><option>Más del 50%</option></select></div>
-                <div class="field"><label>¿Cómo llegan los clientes?</label>
-                    <div class="check-grid"><label class="check-item"><input type="checkbox" name="llegada[]" value="De paso"> De paso</label><label class="check-item"><input type="checkbox" name="llegada[]" value="Recomendación"> Recomendación</label><label class="check-item"><input type="checkbox" name="llegada[]" value="Clientes habituales"> Habituales</label><label class="check-item"><input type="checkbox" name="llegada[]" value="Redes sociales"> Redes sociales</label><label class="check-item"><input type="checkbox" name="llegada[]" value="Google Maps"> Google Maps</label></div>
+                <div class="field"><label>¿Cuáles son sus principales competidores (ferreterías cercanas)?</label><textarea name="competidores" placeholder="Nombres de ferreterías, dónde están, qué tan grandes son..."></textarea></div>
+                <div class="field"><label>¿En qué cree que les gana a la competencia hoy?</label><textarea name="ventaja_competencia" placeholder="Surtido, precio, atención, ubicación, conocimiento técnico..."></textarea></div>
+                <div class="field"><label>¿Qué porcentaje de sus clientes actuales son extranjeros?</label>
+                    <select name="porcentaje_extranjeros">
+                        <option value="">Selecciona...</option>
+                        <option>Casi ninguno todavía</option>
+                        <option>Entre 10% y 30%</option>
+                        <option>Entre 30% y 50%</option>
+                        <option>Más del 50%</option>
+                    </select>
                 </div>
-                <div class="field"><label>Reseñas en Google/Facebook</label><select name="resenas_google"><option>Sí, varias y buenas</option><option>Pocas</option><option>Ninguna</option></select></div>
+                <div class="field"><label>¿Cómo llegan hoy sus clientes a la ferretería?</label>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="De paso / están cerca"> De paso / están cerca</label>
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="Recomendación de boca en boca"> Recomendación de boca en boca</label>
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="Clientes habituales"> Clientes habituales</label>
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="Redes sociales"> Redes sociales</label>
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="Google Maps"> Google Maps</label>
+                        <label class="check-item"><input type="checkbox" name="llegada[]" value="No sé cómo nos encuentran"> No sé cómo nos encuentran</label>
+                    </div>
+                </div>
+                <div class="field"><label>¿Tiene reseñas en Google o Facebook?</label>
+                    <select name="resenas_google">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, varias y buenas</option>
+                        <option>Pocas</option>
+                        <option>Ninguna</option>
+                        <option>No tenemos perfil en Google Maps</option>
+                    </select>
+                </div>
             </div>
             <hr class="divider">
 
-            <!-- SECCIÓN 5: PREGÚNTALE A BENITO -->
+            <!-- SECCIÓN 5: SECCIÓN "PREGÚNTALE A BENITO" -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-icon icon-purple"><i class="ti ti-message-circle-question"></i></div>
-                    <div><div class="section-title">5. "Pregúntale a Benito"</div><div class="section-sub">Diferenciador clave</div></div>
+                    <div><div class="section-title">5. Sección "Pregúntale a Benito"</div><div class="section-sub">El diferenciador clave de la plataforma MUCLE</div></div>
                 </div>
-                <div class="field"><label>Preguntas frecuentes sobre materiales</label><textarea name="preguntas_frecuentes" placeholder="Cuánto material necesito, qué pintura usar..."></textarea></div>
-                <div class="field"><label>Temas de autoridad</label><textarea name="temas_autoridad" placeholder="Cálculo de materiales, acabados..."></textarea></div>
-                <div class="field"><label>Tiempo diario para responder preguntas</label><select name="tiempo_respuesta"><option>15 a 30 minutos</option><option>30 a 1 hora</option><option>1 a 2 horas</option></select></div>
-                <div class="field"><label>¿Tiene materiales técnicos o guías?</label><select name="materiales_tecnicos"><option>Sí, varios</option><option>Algunos</option><option>Pocos o ninguno</option></select></div>
-                <div class="field"><label>¿Grabaría videos cortos respondiendo?</label><select name="dispuesto_videos"><option>Sí, con gusto</option><option>Tal vez</option><option>Prefiero solo texto</option></select></div>
+                <div class="field"><label>¿Qué tipo de preguntas le hacen más frecuentemente sobre materiales o remodelación?</label><textarea name="preguntas_frecuentes" placeholder="Ej: Cuánto material necesito para tal área, qué pintura usar, cómo impermeabilizar un techo..."></textarea></div>
+                <div class="field"><label>¿Sobre qué temas se siente con más autoridad para orientar a los clientes?</label><textarea name="temas_autoridad" placeholder="Ej: Cálculo de materiales, selección de acabados, presupuestos de obra, diseño de espacios..."></textarea></div>
+                <div class="field"><label>¿Cuánto tiempo al día podría dedicar a responder preguntas en línea al inicio?</label>
+                    <select name="tiempo_respuesta">
+                        <option value="">Selecciona...</option>
+                        <option>15 a 30 minutos</option>
+                        <option>30 minutos a 1 hora</option>
+                        <option>1 a 2 horas</option>
+                        <option>Necesito que sea casi automático desde el inicio</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Tiene materiales técnicos, guías o fichas de productos que pueda compartir?</label>
+                    <select name="materiales_tecnicos">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, tengo varios</option>
+                        <option>Algunos</option>
+                        <option>Pocos o ninguno</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Estaría dispuesto a grabar videos cortos respondiendo preguntas frecuentes?</label>
+                    <select name="dispuesto_videos">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, con gusto</option>
+                        <option>Tal vez, necesito pensarlo</option>
+                        <option>Prefiero solo texto por ahora</option>
+                    </select>
+                </div>
             </div>
             <hr class="divider">
 
-            <!-- SECCIÓN 6: OBJETIVOS -->
+            <!-- SECCIÓN 6: OBJETIVOS Y EXPECTATIVAS -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-icon icon-teal"><i class="ti ti-rocket"></i></div>
-                    <div><div class="section-title">6. Objetivos y expectativas</div><div class="section-sub">Metas y plazos</div></div>
+                    <div><div class="section-title">6. Objetivos y expectativas</div><div class="section-sub">Qué quiere lograr y en qué tiempo</div></div>
                 </div>
-                <div class="field"><label>Objetivo principal con este proyecto digital</label>
-                    <div class="check-grid"><label class="check-item"><input type="checkbox" name="objetivos[]" value="Vender más en la ferretería"> Vender más</label><label class="check-item"><input type="checkbox" name="objetivos[]" value="Atraer clientes extranjeros"> Atraer extranjeros</label><label class="check-item"><input type="checkbox" name="objetivos[]" value="Más proyectos de arquitectura"> Más proyectos</label><label class="check-item"><input type="checkbox" name="objetivos[]" value="Organizar mejor la operación"> Organizar operación</label><label class="check-item"><input type="checkbox" name="objetivos[]" value="Modernizar imagen"> Modernizar imagen</label></div>
+                <div class="field"><label>¿Cuál es su objetivo principal con este proyecto digital?</label>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Vender más en la ferretería"> Vender más en la ferretería</label>
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Atraer clientes extranjeros"> Atraer clientes extranjeros</label>
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Conseguir más proyectos de arquitectura"> Conseguir más proyectos de arquitectura</label>
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Organizar mejor la operación"> Organizar mejor la operación</label>
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Modernizar la imagen del negocio"> Modernizar la imagen del negocio</label>
+                        <label class="check-item"><input type="checkbox" name="objetivos[]" value="Crecer a otras zonas o ciudades"> Crecer a otras zonas o ciudades</label>
+                    </div>
                 </div>
-                <div class="field"><label>¿En cuánto tiempo espera ver resultados?</label><select name="tiempo_resultados"><option>1 a 2 meses</option><option>3 a 6 meses</option><option>6 meses a 1 año</option><option>Tengo paciencia</option></select></div>
-                <div class="field"><label>Presupuesto definido</label><select name="presupuesto_definido"><option>Sí, tengo un número claro</option><option>Tengo una idea general</option><option>Todavía no he definido</option></select></div>
-                <div class="field"><label>¿Algo que le preocupe?</label><textarea name="preocupaciones" placeholder="Dudas, experiencias previas..."></textarea></div>
-                <div class="field"><label>Comentarios adicionales</label><textarea name="comentarios_extra" placeholder="Planes de expansión, ideas..."></textarea></div>
+                <div class="field"><label>¿En cuánto tiempo espera ver resultados?</label>
+                    <select name="tiempo_resultados">
+                        <option value="">Selecciona...</option>
+                        <option>1 a 2 meses</option>
+                        <option>3 a 6 meses</option>
+                        <option>6 meses a 1 año</option>
+                        <option>Tengo paciencia, quiero resultados sólidos</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Tiene presupuesto definido para este proyecto?</label>
+                    <select name="presupuesto_definido">
+                        <option value="">Selecciona...</option>
+                        <option>Sí, tengo un número claro</option>
+                        <option>Tengo una idea general</option>
+                        <option>Todavía no he definido un monto</option>
+                        <option>Prefiero escuchar la propuesta primero</option>
+                    </select>
+                </div>
+                <div class="field"><label>¿Hay algo que le preocupe o que quiera que evitemos?</label><textarea name="preocupaciones" placeholder="Dudas, experiencias anteriores, cosas que no quiere..."></textarea></div>
+                <div class="field"><label>¿Algo más que quiera contarnos sobre MUCLE que no hayamos preguntado?</label><textarea name="comentarios_extra" placeholder="Proyectos futuros, ideas, socios, planes de expansión..."></textarea></div>
             </div>
 
             <div class="submit-area">
@@ -475,6 +608,7 @@
         else if (percent >= 15) section = 2;
         counterSpan.textContent = `Sección ${section} de 6 — ${percent}% completado`;
     }
+
     fields.forEach(f => f.addEventListener('input', updateProgress));
     fields.forEach(f => f.addEventListener('change', updateProgress));
     updateProgress();
